@@ -125,7 +125,7 @@ module.exports = {
         },
         {
           hour: 0,
-          minutes: 8
+          minutes: 8,
           seconds: 45
         },
         {
