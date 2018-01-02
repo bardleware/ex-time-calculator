@@ -1,9 +1,10 @@
 const fs = require('fs')
 const data = require('./network-plus')
+const parseCSV = require('./calculate-time')
+const writeCSV = require('./writeCSV')
 
-fs.writeFile("./test.json", JSON.stringify(data), err => {
-  if (err) {
-    console.log(err)
-  }
-  console.log("file Saved Successfully")
-})
+const theCSV = data.sections.reduce((csvString, currentSection) => {
+  return csvString + parseCSV(currentSection.name, currentSection.t)
+},'')
+
+writeCSV( `network_plus_${new Date()}`, theCSV )
